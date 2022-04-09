@@ -54,7 +54,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        $product->name = $request->input('name');
+        // $product->price = $request->input('price');
+        // $product->slug = $request->input('slug');
+        $product->update();
+        // $product->update($request->all());
+        return $product;
+        
     }
 
     /**
@@ -65,6 +72,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Product::destroy($id);
     }
 }
